@@ -209,8 +209,8 @@ const DokumentasjonEtterspurtView: React.FC<Props> = ({dokumentasjonEtterspurt, 
                 )}
                 {dokumentasjonEtterspurt.oppgaveElementer.map((oppgaveElement, oppgaveElementIndex) => {
                     let {typeTekst, tilleggsinfoTekst} = getVisningstekster(
-                        oppgaveElement.tittel,
-                        oppgaveElement.beskrivelse
+                        oppgaveElement.dokumenttype,
+                        oppgaveElement.tilleggsinformasjon
                     );
                     return (
                         <DokumentasjonEtterspurtElementView

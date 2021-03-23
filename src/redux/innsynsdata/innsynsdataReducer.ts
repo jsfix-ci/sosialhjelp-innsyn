@@ -73,8 +73,8 @@ export interface OppgaveListe {
 }
 
 export interface OppgaveInnhold {
-    tittel: string;
-    beskrivelse: string;
+    dokumenttype: string;
+    tilleggsinformasjon: string;
     erFraInnsyn: boolean;
 }
 //<Oppgaver liste med DokumentasjonEtterspurt> -  på sikt liste med Oppgave
@@ -344,8 +344,8 @@ const InnsynsdataReducer: Reducer<InnsynsdataType, InnsynsdataActionType & Vedle
                             oppgaveElementer: oppgave.oppgaveElementer.map((oppgaveElement, oppgaveElementIndex) => {
                                 if (
                                     oppgaveElementIndex === action.internalIndex &&
-                                    oppgaveElement.tittel === action.oppgaveElement.tittel &&
-                                    oppgaveElement.beskrivelse === action.oppgaveElement.beskrivelse
+                                    oppgaveElement.dokumenttype === action.oppgaveElement.dokumenttype &&
+                                    oppgaveElement.tilleggsinformasjon === action.oppgaveElement.tilleggsinformasjon
                                 ) {
                                     return {
                                         ...oppgaveElement,
@@ -375,8 +375,8 @@ const InnsynsdataReducer: Reducer<InnsynsdataType, InnsynsdataActionType & Vedle
                         ...oppgave,
                         oppgaveElementer: oppgave.oppgaveElementer.map((oppgaveElement) => {
                             if (
-                                oppgaveElement.tittel !== action.dokumenttype ||
-                                oppgaveElement.beskrivelse !== action.tilleggsinfo
+                                oppgaveElement.dokumenttype !== action.dokumenttype ||
+                                oppgaveElement.tilleggsinformasjon !== action.tilleggsinfo
                             ) {
                                 return oppgaveElement;
                             }

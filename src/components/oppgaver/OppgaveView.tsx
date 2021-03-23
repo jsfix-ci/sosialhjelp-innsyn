@@ -1,6 +1,7 @@
 import React from "react";
 import {OppgaveListe} from "../../redux/innsynsdata/innsynsdataReducer";
 import Oppgave from "./Oppgave";
+import {getVisningstekster} from "../../utils/vedleggUtils";
 
 interface Props {
     oppgave: OppgaveListe;
@@ -9,10 +10,9 @@ interface Props {
 const OppgaveView: React.FC<Props> = ({oppgave}) => {
     return (
         <div>
-            {oppgave.oppgaveId}
-            <Oppgave
-                oppgave={oppgave.oppgaveElementer[0]} // må være en forEach
-            />
+            {oppgave.oppgaveElementer.map((oppgaveElement, oppgaveElementIndex) => {
+                return <Oppgave key={oppgaveElementIndex} oppgave={oppgaveElement} oppgaveId={oppgave.oppgaveId} />;
+            })}
         </div>
     );
 };
