@@ -145,9 +145,11 @@ const Oppgaver: React.FC<Props> = ({oppgaver, restStatus}) => {
                         <DriftsmeldingVedlegg leserData={skalViseLastestripe(restStatus)} />
                         <div>
                             {oppgaver !== null &&
-                                oppgaver.map((dok: OppgaveListe, oppgaveIndex: number) => (
-                                    <OppgaveView key={oppgaveIndex} oppgave={dok} oppgaveIndex={oppgaveIndex} />
-                                ))}
+                                oppgaver.map((oppgave: OppgaveListe, oppgaveIndex: number) => {
+                                    return (
+                                        <OppgaveView key={oppgaveIndex} oppgave={oppgave} oppgaveIndex={oppgaveIndex} />
+                                    );
+                                })}
                         </div>
                     </Ekspanderbartpanel>
                 </Panel>
