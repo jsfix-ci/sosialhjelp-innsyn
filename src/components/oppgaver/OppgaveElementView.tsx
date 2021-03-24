@@ -5,11 +5,19 @@ import {FileError} from "../../utils/vedleggUtils";
 
 interface Props {
     oppgave: OppgaveInnhold;
-    setOverMaksStorrelse: (overMaksStorrelse: boolean) => void;
     oppgaveId: string;
+    oppgaveIndex: number;
+    oppgaveElementIndex: number;
+    setOverMaksStorrelse: (overMaksStorrelse: boolean) => void;
 }
 
-const OppgaveView: React.FC<Props> = ({oppgave}) => {
+const OppgaveElementView: React.FC<Props> = ({
+    oppgave,
+    oppgaveId,
+    oppgaveIndex,
+    oppgaveElementIndex,
+    setOverMaksStorrelse,
+}) => {
     const [listeMedFilerSomFeiler, setListeMedFilerSomFeiler] = useState<Array<FileError>>([]);
 
     console.log(oppgave);
@@ -30,5 +38,4 @@ const OppgaveView: React.FC<Props> = ({oppgave}) => {
         </div>
     );
 };
-
-export default OppgaveView;
+export default OppgaveElementView;
