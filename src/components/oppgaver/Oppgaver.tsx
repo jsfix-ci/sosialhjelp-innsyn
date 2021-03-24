@@ -143,20 +143,7 @@ const Oppgaver: React.FC<Props> = ({oppgaver, restStatus}) => {
                         <OpplastingAvVedleggModal />
 
                         <DriftsmeldingVedlegg leserData={skalViseLastestripe(restStatus)} />
-
                         <div>
-                            {
-                                //oppgaver !== null &&
-                                //   oppgaver.map((oppgave: DokumentasjonEtterspurt, oppgaveIndex: number) => (
-                                //       <DokumentasjonEtterspurtView
-                                //           dokumentasjonEtterspurt={oppgave}
-                                //           key={oppgaveIndex}
-                                //           oppgaverErFraInnsyn={oppgaverErFraInnsyn}
-                                //           oppgaveIndex={oppgaveIndex}
-                                //       />
-                                //   ))
-                            }
-
                             {oppgaver !== null &&
                                 oppgaver.map((dok: OppgaveListe, oppgaveIndex: number) => (
                                     <OppgaveView key={oppgaveIndex} oppgave={dok} oppgaveIndex={oppgaveIndex} />
