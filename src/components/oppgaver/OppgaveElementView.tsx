@@ -18,9 +18,9 @@ const OppgaveElementView: React.FC<Props> = ({
     oppgaveElementIndex,
     setOverMaksStorrelse,
 }) => {
-    const [listeMedFilerSomFeiler, setListeMedFilerSomFeiler] = useState<Array<FileError>>([]);
+    const [_, setListeMedFilerSomFeiler] = useState<Array<FileError>>([]);
 
-    console.log(oppgave);
+    console.log(oppgave, oppgaveId);
     return (
         <div className={"oppgaver_detalj"}>
             {oppgave.dokumenttype}
@@ -38,4 +38,5 @@ const OppgaveElementView: React.FC<Props> = ({
         </div>
     );
 };
+
 export default OppgaveElementView;

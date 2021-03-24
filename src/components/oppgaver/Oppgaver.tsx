@@ -159,7 +159,7 @@ const Oppgaver: React.FC<Props> = ({oppgaver, restStatus}) => {
 
                             {oppgaver !== null &&
                                 oppgaver.map((dok: OppgaveListe, oppgaveIndex: number) => (
-                                    <OppgaveView oppgave={dok} />
+                                    <OppgaveView key={oppgaveIndex} oppgave={dok} oppgaveIndex={oppgaveIndex} />
                                 ))}
                         </div>
                     </Ekspanderbartpanel>
