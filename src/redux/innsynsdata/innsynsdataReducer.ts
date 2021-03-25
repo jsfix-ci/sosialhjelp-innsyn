@@ -76,6 +76,7 @@ export interface OppgaveInnhold {
     dokumenttype: string;
     tilleggsinformasjon: string;
     erFraInnsyn: boolean;
+    filer?: Fil[];
 }
 //<Oppgaver liste med DokumentasjonEtterspurt> -  på sikt liste med Oppgave
 //    <OppgaveView tar i mot ett object av DokumentasjonEtterspurt> - tar i mot ett objekt av Oppgave (inneholder OppgaveElement)

@@ -10,6 +10,8 @@ interface Props {
 const OppgaveView: React.FC<Props> = ({oppgave, oppgaveIndex}) => {
     const tittel = oppgave.oppgaveElementer.length > 0 && oppgave.oppgaveElementer[0].dokumenttype;
 
+    const [overMaksStorrelse, setOverMaksStorrelse] = useState(false);
+
     return (
         <div>
             {oppgave.oppgaveElementer.map((oppgaveElement, oppgaveElementIndex) => {

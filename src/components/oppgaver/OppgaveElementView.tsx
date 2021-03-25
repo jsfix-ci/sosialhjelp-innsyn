@@ -23,9 +23,6 @@ const OppgaveElementView: React.FC<Props> = ({
     console.log(oppgave, oppgaveId);
     return (
         <div className={"oppgaver_detalj"}>
-            {oppgave.dokumenttype}
-            {oppgave.tilleggsinformasjon}
-
             <AddFile
                 title={oppgave.dokumenttype}
                 description={oppgave.tilleggsinformasjon}
