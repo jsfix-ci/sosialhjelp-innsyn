@@ -9,6 +9,23 @@ export const maxFileSize = 10 * 1024 * 1024; // max bytes per fil
 
 export type FileValidationError = "ILLEGAL_FILETYPE" | "ILLEGAL_FILENAME" | "ILLEGAL_FILESIZE";
 
+export const getValidationErrors = (listeMedFil: Array<FileError>) => {
+    const errors: FileValidationError[] = [];
+    listeMedFil.forEach((value) => {
+        if (!value.legalFileSize) {
+            errors.push("ILLEGAL_FILESIZE");
+        }
+        if (!value.legalFileExtension) {
+            errors.push("ILLEGAL_FILETYPE");
+        }
+        if (value.containsIllegalCharacters) {
+            errors.push("ILLEGAL_FILENAME");
+        }
+    });
+
+    return errors;
+};
+
 export enum HendelseTypeEnum {
     BRUKER = "bruker",
     SOKNAD = "soknad",

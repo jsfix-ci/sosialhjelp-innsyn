@@ -1,6 +1,7 @@
 import React from "react";
 import ErrorMessage from "./ErrorMessage";
 import ErrorMessageTitle from "./ErrorMessageTitle";
+import {FileValidationError} from "../../utils/vedleggUtils";
 
 const ReturnErrorMessage = (flagg: any, filnavn: any, listeMedFil: any) => {
     return (
@@ -19,10 +20,10 @@ const ReturnErrorMessage = (flagg: any, filnavn: any, listeMedFil: any) => {
     );
 };
 
-export const ErrorMessageList = (errors: string[]) => {
+export const ErrorMessageList = (errors: FileValidationError[]) => {
     return (
         <ul>
-            {errors.map((error: string) => {
+            {errors.map((error) => {
                 return <li key={error}>{error}</li>;
             })}
         </ul>

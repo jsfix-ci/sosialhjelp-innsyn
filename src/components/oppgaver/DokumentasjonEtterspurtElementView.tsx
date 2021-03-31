@@ -1,10 +1,17 @@
 import {Fil, DokumentasjonEtterspurtElement} from "../../redux/innsynsdata/innsynsdataReducer";
 import React, {useEffect, useState} from "react";
-import {isFileErrorsNotEmpty, alertUser, writeErrorMessage, FileError} from "../../utils/vedleggUtils";
+import {
+    isFileErrorsNotEmpty,
+    alertUser,
+    writeErrorMessage,
+    FileError,
+    getValidationErrors,
+} from "../../utils/vedleggUtils";
 import {useSelector} from "react-redux";
 import {InnsynAppState} from "../../redux/reduxTypes";
 import FilView from "./FilView";
 import AddFile from "./AddFile";
+import {ErrorMessageList} from "./ReturnErrorMessage";
 
 const DokumentasjonEtterspurtElementView: React.FC<{
     typeTekst: string;
@@ -66,7 +73,7 @@ const DokumentasjonEtterspurtElementView: React.FC<{
                     />
                 ))}
             {isFileErrorsNotEmpty(listeMedFilerSomFeiler) &&
-                writeErrorMessage(listeMedFilerSomFeiler, oppgaveElementIndex)}
+                ErrorMessageList(getValidationErrors(listeMedFilerSomFeiler))}
         </div>
     );
 };
