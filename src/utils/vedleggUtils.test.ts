@@ -7,6 +7,8 @@ import {
     generateMetadataFromOppgaver,
     opprettFormDataMedVedleggFraOppgaver,
     opprettFormDataMedVedleggFraFiler,
+    getValidationErrors,
+    FileError,
 } from "./vedleggUtils";
 
 const pngFile = {filnavn: "test0.png", file: new Blob()} as Fil;
@@ -73,6 +75,24 @@ const expectedEttersendelseMetadata = [
         filer: [{filnavn: pngFile.filnavn}, {filnavn: jpgFile.filnavn}, {filnavn: pdfFile.filnavn}],
     },
 ];
+
+describe("Vedlegg validation", () => {
+    it("getValidationErrors should return ILLEGAL_FILESIZE for too large files", () => {
+        const fileError: FileError[] = [
+            {
+                legalFileExtension: true,
+                containsIllegalCharacters: false,
+                legalFileSize: false,
+                legalCombinedFilesSize: true,
+                arrayIndex: 0,
+                oppgaveElementIndex: 0,
+                filename: "somefile.png",
+            },
+        ];
+        const returnedErrors = getValidationErrors(fileError);
+        expect(returnedErrors).toEqual(["ILLEGAL_FILESIZE"]);
+    });
+});
 
 describe("VedleggUtilsTest", () => {
     it("should create correct form and meta data for oppgaver", () => {

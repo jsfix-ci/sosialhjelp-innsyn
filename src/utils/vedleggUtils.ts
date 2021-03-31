@@ -9,17 +9,18 @@ export const maxFileSize = 10 * 1024 * 1024; // max bytes per fil
 
 export type FileValidationError = "ILLEGAL_FILETYPE" | "ILLEGAL_FILENAME" | "ILLEGAL_FILESIZE";
 
-export const getValidationErrors = (listeMedFil: Array<FileError>) => {
+export const getValidationErrors = (files: FileList) => {
     const errors: FileValidationError[] = [];
-    listeMedFil.forEach((value) => {
-        if (!value.legalFileSize) {
-            errors.push("ILLEGAL_FILESIZE");
-        }
-        if (!value.legalFileExtension) {
+    Array.from(files).forEach((file: File) => {
+        const filename = file.name;
+        if (!legalFileExtension(filename)) {
             errors.push("ILLEGAL_FILETYPE");
         }
-        if (value.containsIllegalCharacters) {
+        if (containsIllegalCharacters(filename)) {
             errors.push("ILLEGAL_FILENAME");
+        }
+        if (!legalFileSize(file)) {
+            errors.push("ILLEGAL_FILESIZE");
         }
     });
 
@@ -144,7 +145,7 @@ export const legalFileExtension = (filename: string) => {
 };
 
 export interface FileError {
-    legalFileExtension: boolean;
+    legalFileExtension: Boolean;
     containsIllegalCharacters: boolean;
     legalFileSize: boolean;
     legalCombinedFilesSize: boolean;
