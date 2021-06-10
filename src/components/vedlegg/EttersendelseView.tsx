@@ -138,10 +138,8 @@ const EttersendelseView: React.FC<Props> = ({restStatus}) => {
         switch (restStatus) {
             case REST_STATUS.INITIALISERT:
                 return <Lastestriper linjer={1} />;
-                break;
             case REST_STATUS.PENDING:
                 return <Lastestriper linjer={1} />;
-                break;
             case REST_STATUS.FEILET:
                 return (
                     <Alertstripe type="feil" form="inline">
@@ -149,7 +147,6 @@ const EttersendelseView: React.FC<Props> = ({restStatus}) => {
                         Vi klarte ikke hente dine vedlegg{" "}
                     </Alertstripe>
                 );
-                break;
             case REST_STATUS.OK:
                 return (
                     <div className={"oppgaver_detaljer " + (visDetaljeFeiler ? " oppgaver_detalj_feil_ramme" : "")}>
@@ -240,7 +237,6 @@ const EttersendelseView: React.FC<Props> = ({restStatus}) => {
                         </Hovedknapp>
                     </div>
                 );
-                break;
         }
     };
 
